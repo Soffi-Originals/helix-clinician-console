@@ -9,8 +9,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-bg-canvas text-fg-primary font-sans antialiased">
+    // suppressHydrationWarning lets React tolerate the Soffi editor injecting
+    // `data-soffi-id` / `data-soffi-stable-id` attributes before hydration.
+    // Same pattern the Next.js docs recommend for theme libraries and browser
+    // extensions that mutate the DOM ahead of React.
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className="bg-bg-canvas text-fg-primary font-sans antialiased"
+        suppressHydrationWarning
+      >
         <FloatingNav />
         <div className="flex flex-col min-h-screen pt-24 pb-16">
           <main className="flex flex-col gap-12 px-4 sm:px-8 lg:px-12 mx-auto w-full max-w-[1280px]">
