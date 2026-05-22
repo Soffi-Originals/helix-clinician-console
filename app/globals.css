@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Display + body fonts from Fontshare — same families as the marketing site. */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600,700&f[]=space-grotesk@400,500,600,700&display=swap");
+
+/* -------------------------------------------------------------------------- */
+/*  Semantic tokens — every visual value lives here as a CSS variable so it    */
+/*  can be edited in the Soffi UI. Class-driven theme: toggle `.dark` on       */
+/*  <html> to switch.                                                          */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    /* ---- Surfaces (warm cream, mirroring marketing site) ---- */
+    --bg-canvas: 41 24% 96%;      /* #F8F7F4 */
+    --bg-surface: 0 0% 100%;       /* #FFFFFF */
+    --bg-surface-hover: 36 10% 94%;/* #F2F1EE */
+    --bg-subtle: 36 10% 94%;       /* #F2F1EE */
+    --bg-inverse: 0 0% 10%;        /* #1A1A1A */
+    --bg-glass: 0 0% 100%;         /* used with /75 opacity for blur surfaces */
+
+    /* ---- Foreground ---- */
+    --fg-primary: 0 0% 10%;        /* #1A1A1A */
+    --fg-secondary: 0 0% 42%;      /* #6B6B6B */
+    --fg-tertiary: 220 9% 60%;     /* #9CA3AF */
+    --fg-inverse: 0 0% 100%;       /* #FFFFFF */
+    --fg-on-accent: 0 0% 10%;      /* dark on soft sky blue */
+
+    /* ---- Borders (very subtle, hairline) ---- */
+    --border-default: 0 0% 0%;     /* used with /8 opacity */
+    --border-subtle: 0 0% 0%;      /* used with /4 opacity */
+    --border-strong: 0 0% 0%;      /* used with /15 opacity */
+
+    /* ---- Accent — soft sky blue ---- */
+    --accent: 211 99% 73%;         /* #76BDFE — surfaces / fills only */
+    --accent-hover: 213 99% 62%;   /* #3D9BFE */
+    /* `accent-strong` is the only blue safe to use as TEXT on a light surface.
+       Darkened from 62% L → 38% L to give 5–6:1 contrast on cream (AA pass). */
+    --accent-strong: 213 80% 38%;  /* #135AB8 */
+    --accent-subtle: 211 99% 95%;  /* very pale tint */
+    --accent-fg: 0 0% 10%;         /* dark text on light accent */
+
+    /* ---- Status ---- */
+    --success: 142 76% 64%;        /* #4ADE80 */
+    --success-subtle: 142 76% 95%;
+    --success-fg: 142 71% 26%;
+
+    --warning: 38 92% 50%;         /* #F59E0B */
+    --warning-subtle: 38 92% 95%;
+    --warning-fg: 38 92% 22%;
+
+    /* Darkened from 50% → 45% L so white text on the danger button hits
+       WCAG AA (4.5:1+) instead of the borderline 4.36:1 of #E11D48. */
+    --danger: 350 89% 42%;         /* #C90A3A */
+    --danger-subtle: 350 89% 96%;
+    --danger-fg: 350 89% 30%;
+
+    --info: 211 99% 73%;
+    --info-subtle: 211 99% 95%;
+    --info-fg: 213 99% 32%;
+
+    /* ---- Radii (generous, soft) ---- */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-pill: 9999px;
+
+    /* ---- Typography ---- */
+    --font-display: "Clash Display", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "General Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Space Grotesk", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --text-overline: 0.6875rem; /* 11px, uppercase widest tracking */
+    --text-label: 0.75rem;
+    --text-body-sm: 0.8125rem;
+    --text-body: 0.9375rem;
+    --text-body-lg: 1.0625rem;
+    --text-title: 1.25rem;
+    --text-title-lg: 1.75rem;
+    --text-display-sm: 2.5rem;
+    --text-display: clamp(2.75rem, 4vw, 3.5rem);
+    --text-metric: clamp(2.75rem, 4vw, 3.5rem); /* mono stat */
+    --text-metric-sm: 2rem;
+
+    --tracking-tighter: -0.04em;
+    --tracking-tight: -0.02em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.02em;
+    --tracking-widest: 0.1em;
+
+    /* ---- Elevation — soft floats, accent glow ---- */
+    --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.04);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.04), 0 1px 2px hsl(0 0% 0% / 0.02);
+    --shadow-float: 0 8px 32px hsl(0 0% 0% / 0.06), 0 2px 4px hsl(0 0% 0% / 0.02);
+    --shadow-lift: 0 16px 48px hsl(0 0% 0% / 0.10), 0 4px 12px hsl(0 0% 0% / 0.04);
+    --shadow-pill: 0 4px 20px hsl(211 99% 73% / 0.25);
+    --shadow-glow-accent: 0 4px 20px hsl(211 99% 73% / 0.25);
+    --shadow-focus: 0 0 0 4px hsl(211 99% 73% / 0.35);
+    --shadow-glass-inner: inset 0 1px 0 hsl(0 0% 100% / 0.8);
+
+    /* ---- Atmosphere (radial mesh tints) — very subtle, ambient only ---- */
+    --orb-accent: hsl(211 99% 73% / 0.08);
+    --orb-accent-soft: hsl(211 99% 73% / 0.05);
+    --orb-coral: hsl(350 89% 65% / 0.04);
+  }
+
+  .dark {
+    --bg-canvas: 0 0% 7%;
+    --bg-surface: 0 0% 10%;
+    --bg-surface-hover: 0 0% 13%;
+    --bg-subtle: 0 0% 13%;
+    --bg-inverse: 0 0% 100%;
+    --bg-glass: 0 0% 10%;
+
+    --fg-primary: 0 0% 96%;
+    --fg-secondary: 0 0% 68%;
+    --fg-tertiary: 0 0% 50%;
+    --fg-inverse: 0 0% 10%;
+    --fg-on-accent: 0 0% 10%;
+
+    --border-default: 0 0% 100%;   /* paired with /8 opacity */
+    --border-subtle: 0 0% 100%;
+    --border-strong: 0 0% 100%;
+
+    --accent: 211 99% 73%;
+    --accent-hover: 213 99% 78%;
+    --accent-strong: 213 99% 78%;
+    --accent-subtle: 211 60% 16%;
+    --accent-fg: 0 0% 10%;
+
+    --success: 142 76% 64%;
+    --success-subtle: 142 50% 14%;
+    --success-fg: 142 76% 82%;
+
+    --warning: 38 92% 60%;
+    --warning-subtle: 38 60% 14%;
+    --warning-fg: 38 92% 82%;
+
+    --danger: 350 89% 60%;
+    --danger-subtle: 350 50% 18%;
+    --danger-fg: 350 89% 86%;
+
+    --info: 211 99% 73%;
+    --info-subtle: 211 60% 16%;
+    --info-fg: 211 99% 82%;
+
+    --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.5), 0 1px 2px hsl(0 0% 0% / 0.3);
+    --shadow-float: 0 8px 32px hsl(0 0% 0% / 0.55), 0 2px 4px hsl(0 0% 0% / 0.3);
+    --shadow-lift: 0 16px 48px hsl(0 0% 0% / 0.6), 0 4px 12px hsl(0 0% 0% / 0.3);
+    --shadow-focus: 0 0 0 4px hsl(211 99% 73% / 0.4);
+
+    --orb-accent: hsl(211 99% 73% / 0.06);
+    --orb-accent-soft: hsl(211 99% 73% / 0.03);
+    --orb-coral: hsl(350 89% 65% / 0.04);
+  }
+
+  html,
+  body {
+    background-color: hsl(var(--bg-canvas));
+    color: hsl(var(--fg-primary));
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Atmospheric mesh background — fixed, subtle, blurred */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(900px 600px at 80% -10%, var(--orb-accent), transparent 60%),
+      radial-gradient(700px 500px at -10% 80%, var(--orb-accent-soft), transparent 65%),
+      radial-gradient(500px 400px at 50% 110%, var(--orb-coral), transparent 70%);
+  }
+
+  /* App content sits above the atmosphere */
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Skeleton shimmer used by Card variant="loading" and StatCard loading state */
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}

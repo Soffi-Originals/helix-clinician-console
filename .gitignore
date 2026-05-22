@@ -1,0 +1,25 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# next
+.next
+out
+
+# storybook
+storybook-static
+
+# env
+.env*.local
+.env
+
+# misc
+.DS_Store
+*.log
+.idea
+.vscode
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
