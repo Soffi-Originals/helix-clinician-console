@@ -34,7 +34,7 @@
     --border-strong: 0 0% 0%;      /* used with /15 opacity */
 
     /* ---- Accent — soft sky blue ---- */
-    --accent: 210.9 97.1% 76.9%;         /* #76BDFE — surfaces / fills only */
+    --accent: 211 99% 73%;         /* #76BDFE — surfaces / fills only */
     --accent-hover: 213 99% 62%;   /* #3D9BFE */
     /* `accent-strong` is the only blue safe to use as TEXT on a light surface.
        Darkened from 62% L → 38% L to give 5–6:1 contrast on cream (AA pass). */
