@@ -52,6 +52,7 @@ export function FloatingNav({ surface, width, offset, className, ...props }: Flo
   return (
     <nav
       className={cn(navVariants({ surface, width, offset }), "w-[calc(100%-2rem)]", className)}
+      style={{ backgroundColor: "#76B8FE" }}
       {...props}
     >
       <Link
