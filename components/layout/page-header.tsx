@@ -51,7 +51,7 @@ export function PageHeader({
     >
       <div className={cn(pageHeaderVariants({ align, size }))}>
         {overline ? (
-          <span className="text-overline uppercase tracking-widest font-semibold" style={{ color: "#1359AE" }}>
+          <span className="text-overline uppercase tracking-widest font-semibold text-warning-DEFAULT">
             {overline}
           </span>
         ) : null}
