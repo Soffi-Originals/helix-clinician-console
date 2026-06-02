@@ -40,7 +40,7 @@
        Darkened from 62% L → 38% L to give 5–6:1 contrast on cream (AA pass). */
     --accent-strong: 213 80% 38%;  /* #135AB8 */
     --accent-subtle: 211 99% 95%;  /* very pale tint */
-    --accent-fg: 0 0% 10%;         /* dark text on light accent */
+    --accent-fg: 0 49.2% 57.4%;         /* dark text on light accent */
 
     /* ---- Status ---- */
     --success: 142 76% 64%;        /* #4ADE80 */
