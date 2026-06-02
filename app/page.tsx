@@ -41,28 +41,6 @@ export default function OverviewPage() {
         {/* Stat row — naked editorial blocks separated by dividers, no cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 lg:gap-x-12 border-t border-border-subtle pt-8">
           <StatCard
-            label="Active panel"
-            value="248"
-            unit="members"
-            delta="+6 wk/wk"
-            trend="up"
-            tone="neutral"
-            hint="vs. 242 last week"
-            layout="hero"
-            surface="bare"
-          />
-          <StatCard
-            label="Active panel"
-            value="248"
-            unit="members"
-            delta="+6 wk/wk"
-            trend="up"
-            tone="neutral"
-            hint="vs. 242 last week"
-            layout="hero"
-            surface="bare"
-          />
-          <StatCard
             label="AI-flagged"
             value="3"
             unit="open"
@@ -70,6 +48,17 @@ export default function OverviewPage() {
             trend="up"
             tone="danger"
             hint="last 24h"
+            layout="hero"
+            surface="bare"
+          />
+          <StatCard
+            label="Active panel"
+            value="248"
+            unit="members"
+            delta="+6 wk/wk"
+            trend="up"
+            tone="neutral"
+            hint="vs. 242 last week"
             layout="hero"
             surface="bare"
           />
