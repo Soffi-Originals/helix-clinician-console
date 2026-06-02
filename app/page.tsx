@@ -33,7 +33,7 @@ export default function OverviewPage() {
           actions={
             <>
               <Button variant="primary" size="lg">Open visit queue</Button>
-              <Button variant="secondary" size="lg">Viewdailybrief</Button>
+              <Button variant="ghost" size="sm" fullWidth={false}>View daily brief</Button>
             </>
           }
         />
