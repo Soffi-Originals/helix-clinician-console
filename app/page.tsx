@@ -26,8 +26,8 @@ export default function OverviewPage() {
           meta={
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <Badge variant="accent" size="md" dot>3 AI-flagged</Badge>
-              <Badge variant="warning" size="md" dot>14 labs pending</Badge>
               <Badge variant="success" size="md" dot>87s avg response</Badge>
+              <Badge variant="warning" size="md" dot>14 labs pending</Badge>
             </div>
           }
           actions={
