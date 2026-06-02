@@ -52,6 +52,17 @@ export default function OverviewPage() {
             surface="bare"
           />
           <StatCard
+            label="Active panel"
+            value="248"
+            unit="members"
+            delta="+6 wk/wk"
+            trend="up"
+            tone="neutral"
+            hint="vs. 242 last week"
+            layout="hero"
+            surface="bare"
+          />
+          <StatCard
             label="AI-flagged"
             value="3"
             unit="open"
