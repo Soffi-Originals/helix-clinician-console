@@ -91,7 +91,7 @@ export function FloatingNav({ surface, width, offset, className, ...props }: Flo
         <Button variant="accent" size="icon" fullWidth={false} className="hidden sm:inline-flex">
           New visit
         </Button>
-        <Avatar size="sm" tone="accent" initials="DP" />
+        <Avatar size="sm" tone="danger" ring="soft" shape="square" initials="DP" />
       </div>
     </nav>
   );
