@@ -116,6 +116,7 @@ export default function OverviewPage() {
               <div className="flex items-start gap-3">
                 <Avatar
                   size="lg"
+                  shape="square"
                   initials={p.initials}
                   tone={p.riskLevel === "critical" ? "danger" : "accent"}
                   ring="soft"
