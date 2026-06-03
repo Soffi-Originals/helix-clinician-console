@@ -42,8 +42,8 @@ const items = [
   { href: "/", label: "Today" },
   { href: "/patients", label: "Patients" },
   { href: "/visits", label: "Visits" },
-  { href: "/labs", label: "Labs" },
   { href: "/notes", label: "Notes" },
+  { href: "/labs", label: "Labs" },
 ] as const;
 
 export function FloatingNav({ surface, width, offset, className, ...props }: FloatingNavProps) {
