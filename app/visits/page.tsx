@@ -98,7 +98,7 @@ export default function VisitsPage() {
                 <CardOverline>Live queue</CardOverline>
                 <CardTitle>Members waiting now</CardTitle>
               </div>
-              <Badge variant="accent" size="md" dot>Auto-routing on</Badge>
+              <Badge variant="success" size="md" dot>Auto-routing on</Badge>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {waiting.map((v) => <VisitCard key={v.id} visit={v} />)}

@@ -26,31 +26,20 @@ export default function OverviewPage() {
           meta={
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <Badge variant="accent" size="md" dot>3 AI-flagged</Badge>
-              <Badge variant="warning" size="md" dot>14 labs pending</Badge>
               <Badge variant="success" size="md" dot>87s avg response</Badge>
+              <Badge variant="warning" size="md" dot>14 labs pending</Badge>
             </div>
           }
           actions={
             <>
               <Button variant="primary" size="lg">Open visit queue</Button>
-              <Button variant="secondary" size="lg">Daily brief</Button>
+              <Button variant="ghost" size="sm" fullWidth={false}>View daily brief</Button>
             </>
           }
         />
 
         {/* Stat row — naked editorial blocks separated by dividers, no cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 lg:gap-x-12 border-t border-border-subtle pt-8">
-          <StatCard
-            label="Active panel"
-            value="248"
-            unit="members"
-            delta="+6 wk/wk"
-            trend="up"
-            tone="neutral"
-            hint="vs. 242 last week"
-            layout="hero"
-            surface="bare"
-          />
           <StatCard
             label="AI-flagged"
             value="3"
@@ -59,6 +48,17 @@ export default function OverviewPage() {
             trend="up"
             tone="danger"
             hint="last 24h"
+            layout="hero"
+            surface="bare"
+          />
+          <StatCard
+            label="Active panel"
+            value="248"
+            unit="members"
+            delta="+6 wk/wk"
+            trend="up"
+            tone="neutral"
+            hint="vs. 242 last week"
             layout="hero"
             surface="bare"
           />
@@ -116,6 +116,7 @@ export default function OverviewPage() {
               <div className="flex items-start gap-3">
                 <Avatar
                   size="lg"
+                  shape="square"
                   initials={p.initials}
                   tone={p.riskLevel === "critical" ? "danger" : "accent"}
                   ring="soft"

@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-bg-canvas text-fg-primary font-sans antialiased"
         suppressHydrationWarning
       >
-        <FloatingNav />
+        <FloatingNav width="wide" offset="floating" surface="solid" />
         <div className="flex flex-col min-h-screen pt-24 pb-16">
           <main className="flex flex-col gap-12 px-4 sm:px-8 lg:px-12 mx-auto w-full max-w-[1280px]">
             {children}

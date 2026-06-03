@@ -68,6 +68,12 @@ export default function PatientsPage() {
                     <Link
                       href={`/patients/${p.id}`}
                       className="font-display text-title font-semibold tracking-tight hover:text-accent-strong"
+                      style={p.id === "p-004" ? {
+                        color: "#3E95FE",
+                        fontWeight: 100,
+                        fontStyle: "italic",
+                        fontSize: "11svh",
+                      } : undefined}
                     >
                       {p.name}
                     </Link>

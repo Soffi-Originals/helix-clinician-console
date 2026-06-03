@@ -42,8 +42,8 @@ const items = [
   { href: "/", label: "Today" },
   { href: "/patients", label: "Patients" },
   { href: "/visits", label: "Visits" },
-  { href: "/labs", label: "Labs" },
   { href: "/notes", label: "Notes" },
+  { href: "/labs", label: "Labs" },
 ] as const;
 
 export function FloatingNav({ surface, width, offset, className, ...props }: FloatingNavProps) {
@@ -88,10 +88,10 @@ export function FloatingNav({ surface, width, offset, className, ...props }: Flo
 
       <div className="flex items-center gap-1 pr-1">
         <ThemeToggle />
-        <Button variant="primary" size="sm" className="hidden sm:inline-flex">
+        <Button variant="accent" size="icon" fullWidth={false} className="hidden sm:inline-flex">
           New visit
         </Button>
-        <Avatar size="sm" tone="accent" initials="DP" />
+        <Avatar size="sm" tone="danger" ring="soft" shape="square" initials="DP" />
       </div>
     </nav>
   );
