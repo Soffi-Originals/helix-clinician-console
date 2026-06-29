@@ -213,7 +213,7 @@ export default function OverviewPage() {
           </div>
         </Card>
 
-        <Card variant="default" radius="2xl" padding="lg" tone="danger" className="lg:col-span-2">
+        <Card variant="default" radius="2xl" padding="lg" tone="danger" className="lg:col-span-2 border-2 border-danger-fg">
           <div className="flex flex-col gap-1 mb-6">
             <CardOverline>Critical surveillance</CardOverline>
             <CardTitle>Intervene within 4 hours</CardTitle>
