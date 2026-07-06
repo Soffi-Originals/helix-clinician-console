@@ -55,7 +55,7 @@ export function PageHeader({
             {overline}
           </span>
         ) : null}
-        <h1 className="font-display text-display-sm md:text-display font-semibold tracking-tighter text-fg-primary text-balance">
+        <h1 className="font-display text-display-sm md:text-display font-semibold tracking-tighter text-pink-500 text-balance">
           {title}
         </h1>
         {description ? (
