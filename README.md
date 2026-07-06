@@ -1,4 +1,4 @@
-# Helix · Clinician Console
+# Helix · Clinician Console - Cris edit
 
 A vibe-coded demo app for early Soffi users. A serious B2B health-tech surface — the
 "product side" of the [demo-marketing-site](../demo-marketing-site) AI health platform.
