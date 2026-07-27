@@ -20,8 +20,9 @@ export default function OverviewPage() {
       {/* Hero — editorial header */}
       <section className="flex flex-col gap-10 pt-2">
         <PageHeader
+          style={{ marginBottom: '8px' }}
           overline="Friday · May 22, 2026"
-          title="Health isn't reactive. It's predictive."
+          title="jlejwlgjalrj"
           description="14 active members on your panel today. 3 anomalies the AI surfaced overnight. 2 of them need a clinician in the next four hours."
           meta={
             <div className="flex flex-wrap items-center gap-2 pt-2">
@@ -32,8 +33,8 @@ export default function OverviewPage() {
           }
           actions={
             <>
-              <Button variant="primary" size="lg">Open visit queue</Button>
               <Button variant="secondary" size="lg">Daily brief</Button>
+              <Button variant="primary" size="lg">Open visit queue</Button>
             </>
           }
         />
@@ -89,7 +90,7 @@ export default function OverviewPage() {
 
       {/* Flagged events */}
       <section className="flex flex-col gap-6">
-        <div className="flex items-end justify-between flex-wrap gap-3">
+        <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="flex flex-col gap-1">
             <CardOverline>AI Diagnostics</CardOverline>
             <h2 className="font-display text-display-sm font-semibold tracking-tighter">
@@ -98,9 +99,9 @@ export default function OverviewPage() {
           </div>
           <Link
             href="/patients"
-            className="inline-flex items-center gap-1.5 text-body-sm font-medium text-fg-primary hover:gap-2 transition-all"
+            className={buttonVariants({ variant: "outline", size: "sm" })}
           >
-            View all members <ArrowRight className="h-3.5 w-3.5" />
+            View all {patients.length} members <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
