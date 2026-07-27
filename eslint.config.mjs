@@ -1,23 +1,18 @@
-import nextPlugin from "@next/eslint-plugin-next";
-import tsParser from "@typescript-eslint/parser";
+import { createRequire } from "module";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const require = createRequire(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const { FlatCompat } = require("@eslint/eslintrc");
+
+const compat = new FlatCompat({ baseDirectory: __dirname });
 
 /** @type {import("eslint").Linter.Config[]} */
 const eslintConfig = [
-  {
-    plugins: {
-      "@next/next": nextPlugin,
-    },
-    rules: {
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs["core-web-vitals"].rules,
-    },
-  },
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    languageOptions: {
-      parser: tsParser,
-    },
-  },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
 export default eslintConfig;
