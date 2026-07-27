@@ -32,8 +32,8 @@ export default function OverviewPage() {
           }
           actions={
             <>
-              <Button variant="primary" size="lg">Open visit queue</Button>
               <Button variant="secondary" size="lg">Daily brief</Button>
+              <Button variant="primary" size="lg">Open visit queue</Button>
             </>
           }
         />
