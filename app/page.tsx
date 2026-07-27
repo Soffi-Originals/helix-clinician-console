@@ -21,7 +21,7 @@ export default function OverviewPage() {
       <section className="flex flex-col gap-10 pt-2">
         <PageHeader
           overline="Friday · May 22, 2026"
-          title="Health isn't reactive. It's predictive!"
+          title="jlejwlgjalrj"
           description="14 active members on your panel today. 3 anomalies the AI surfaced overnight. 2 of them need a clinician in the next four hours."
           meta={
             <div className="flex flex-wrap items-center gap-2 pt-2">
