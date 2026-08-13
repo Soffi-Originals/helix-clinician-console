@@ -7,12 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { RiskScore } from "@/components/ui/risk-score";
-import { Sparkline } from "@/components/ui/sparkline";
 import { patients } from "@/lib/data/patients";
 import { visits } from "@/lib/data/visits";
 
 export default function OverviewPage() {
-  const flagged = patients.filter((p) => p.riskLevel === "high" || p.riskLevel === "critical");
+  const flagged = patients
+    .filter((p) => p.riskLevel === "high" || p.riskLevel === "critical")
+    .slice(0, 2);
   const waiting = visits.filter((v) => v.status === "waiting");
 
   return (
@@ -22,14 +23,7 @@ export default function OverviewPage() {
         <PageHeader
           overline="Friday · May 22, 2026"
           title="Health isn't reactive. It's predictive."
-          description="14 active members on your panel today. 3 anomalies the AI surfaced overnight. 2 of them need a clinician in the next four hours."
-          meta={
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <Badge variant="accent" size="md" dot>3 AI-flagged</Badge>
-              <Badge variant="warning" size="md" dot>14 labs pending</Badge>
-              <Badge variant="success" size="md" dot>87s avg response</Badge>
-            </div>
-          }
+          description="Three anomalies surfaced overnight. Two of them need a clinician in the next four hours."
           actions={
             <>
               <Button variant="primary" size="lg">Open visit queue</Button>
@@ -87,7 +81,7 @@ export default function OverviewPage() {
         </div>
       </section>
 
-      {/* Flagged events */}
+      {/* Flagged events — compact list, 2 patients max */}
       <section className="flex flex-col gap-6">
         <div className="flex items-end justify-between flex-wrap gap-3">
           <div className="flex flex-col gap-1">
@@ -100,22 +94,19 @@ export default function OverviewPage() {
             href="/patients"
             className="inline-flex items-center gap-1.5 text-body-sm font-medium text-fg-primary hover:gap-2 transition-all"
           >
-            View all members <ArrowRight className="h-3.5 w-3.5" />
+            View all flagged <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {flagged.map((p) => (
-            <Card
-              key={p.id}
-              variant="default"
-              radius="2xl"
-              padding="lg"
-              className="group hover:shadow-float transition-shadow"
-            >
-              <div className="flex items-start gap-3">
+        <Card variant="default" radius="2xl" padding="lg">
+          <div className="flex flex-col divide-y divide-border-subtle">
+            {flagged.map((p) => (
+              <div
+                key={p.id}
+                className="flex items-center gap-4 py-4 first:pt-0 last:pb-0"
+              >
                 <Avatar
-                  size="lg"
+                  size="md"
                   initials={p.initials}
                   tone={p.riskLevel === "critical" ? "danger" : "accent"}
                   ring="soft"
@@ -123,30 +114,16 @@ export default function OverviewPage() {
                 <div className="flex flex-col gap-0.5 flex-1 min-w-0">
                   <Link
                     href={`/patients/${p.id}`}
-                    className="font-display text-title font-semibold tracking-tight hover:text-accent-strong"
+                    className="font-display font-semibold text-body tracking-tight hover:text-accent-strong"
                   >
                     {p.name}
                   </Link>
-                  <span className="text-label font-mono text-fg-tertiary">{p.mrn}</span>
+                  <div className="flex items-center gap-1.5 text-body-sm text-fg-secondary">
+                    <Sparkles className="h-3 w-3 text-accent-strong shrink-0" />
+                    <span className="line-clamp-1">{p.flag ?? "Routine surveillance"}</span>
+                  </div>
                 </div>
                 <RiskScore score={p.riskScore} level={p.riskLevel} size="sm" />
-              </div>
-
-              <div className="mt-4 flex items-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-accent-strong" />
-                <span className="text-body-sm text-fg-secondary line-clamp-2">{p.flag ?? "Routine surveillance"}</span>
-              </div>
-
-              <div className="mt-4 h-16 -mx-2">
-                <Sparkline
-                  data={p.trend}
-                  tone={p.riskLevel === "critical" ? "danger" : "warning"}
-                  size="lg"
-                />
-              </div>
-
-              <div className="mt-4 flex items-center justify-between text-label text-fg-tertiary">
-                <span>{p.program} · {p.age}{p.sex}</span>
                 <Link
                   href={`/patients/${p.id}`}
                   className={buttonVariants({ variant: "secondary", size: "sm" })}
@@ -154,9 +131,9 @@ export default function OverviewPage() {
                   Open chart
                 </Link>
               </div>
-            </Card>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Card>
       </section>
 
       {/* Live queue + critical alerts split */}
@@ -221,7 +198,7 @@ export default function OverviewPage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            {flagged
+            {patients
               .filter((p) => p.riskLevel === "critical")
               .map((p) => (
                 <div
