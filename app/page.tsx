@@ -105,13 +105,17 @@ export default function OverviewPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {flagged.map((p) => (
+          {flagged.map((p, i) => (
             <Card
               key={p.id}
               variant="default"
               radius="2xl"
               padding="lg"
               className="group hover:shadow-float transition-shadow"
+              style={{
+                animation: "card-enter 0.55s cubic-bezier(0.4,0,0.2,1) both",
+                animationDelay: `${i * 120}ms`,
+              }}
             >
               <div className="flex items-start gap-3">
                 <Avatar
