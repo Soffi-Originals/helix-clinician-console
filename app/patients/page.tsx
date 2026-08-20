@@ -47,7 +47,7 @@ export default function PatientsPage() {
         </div>
 
         {/* Gallery — not a dense table. Soft floating cards. */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {patients.map((p) => (
             <Card
               key={p.id}

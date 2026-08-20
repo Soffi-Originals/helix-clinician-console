@@ -194,4 +194,27 @@
     0%   { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
+
+  /* Sparkline draw-on: stroke traces left → right */
+  @keyframes sparkline-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Sparkline fill reveal: clip-rect expands left → right in sync */
+  @keyframes sparkline-reveal {
+    from { width: 0; }
+    to   { width: 120px; }
+  }
+
+  /* Flagged patient cards slide up and fade in, staggered */
+  @keyframes card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
